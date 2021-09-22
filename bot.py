@@ -34,8 +34,8 @@ async def die(event):
     me = (await bot.get_me()).username
     dn = event.builder.article(
             title="It's a Lovely bot!",
-            description="It's a Lovely Bot!`\n**(c) 📢𝙋𝙊𝙒𝙀𝙍𝙀𝘿 𝘽𝙔 :- @LOVELY_NETWORK ❤️‍🔥**",
-            text=f"**It's a Lovely bot**\n`@{me} secret UserID|Message`\n**(c) UPDATES @LOVELY_ROBOTS**",
+            description="It's a Lovely Bot!`\n** 📢𝙋𝙊𝙒𝙀𝙍𝙀𝘿 𝘽𝙔 :- @LOVELY_NETWORK ❤️‍🔥**",
+            text=f"**It's a Lovely bot**\n`@{me} secret UserID|Message`\n**UPDATES @LOVELY_ROBOTS**",
             buttons=[
                 [Button.switch_inline(" Go Inline ", query="secret ")]
                 ]
