@@ -42,7 +42,7 @@ async def die(event):
             )
     await event.answer([dn])
     
-@bot.on(events.InlineQuery(pattern="wspr"))
+@bot.on(events.InlineQuery(pattern="secret"))
 async def inline(event):
     me = (await bot.get_me()).username
     try:
