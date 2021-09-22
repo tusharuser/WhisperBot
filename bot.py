@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO)
 TOKEN = os.environ.get("TOKEN", None)
 
 bot = TelegramClient(
-        "Whisper",
+        "Lovely",
         api_id=6,
         api_hash="eb06d4abfb49dc3eeb1aeb98ae0f581e"
         ).start(
@@ -17,10 +17,10 @@ bot = TelegramClient(
                 )
 db = {}
 
-@bot.on(events.NewMessage(pattern="^[!?/]start$"))
+@bot.on(events.NewMessage(pattern="^[!?/]secret$"))
 async def stsrt(event):
     await event.reply(
-            "**Heya, I am a Whisper Bot!**",
+            "**Heya, I am a Lovely Bot!**",
             buttons=[
                 [Button.switch_inline("Go Inline", query="")]
                 ]
@@ -33,11 +33,11 @@ async def die(event):
         return
     me = (await bot.get_me()).username
     dn = event.builder.article(
-            title="It's a whisper bot!",
-            description="It's a whisper Bot!\n(c) Reeshuxd",
-            text=f"**It's a whisper bot**\n`@{me} wspr UserID|Message`\n**(c) Reeshuxd**",
+            title="It's a Lovely bot!",
+            description="It's a Lovely Bot!`\n**(c) 📢𝙋𝙊𝙒𝙀𝙍𝙀𝘿 𝘽𝙔 :- @LOVELY_NETWORK ❤️‍🔥**",
+            text=f"**It's a Lovely bot**\n`@{me} secret UserID|Message`\n**(c) UPDATES @LOVELY_ROBOTS**",
             buttons=[
-                [Button.switch_inline(" Go Inline ", query="wspr ")]
+                [Button.switch_inline(" Go Inline ", query="secret ")]
                 ]
             )
     await event.answer([dn])
@@ -52,13 +52,13 @@ async def inline(event):
         await event.answer(
                 [], 
                 switch_pm=f"@{me} [UserID]|[Message]",
-                switch_pm_param="start"
+                switch_pm_param="secret"
                 )
     except ValueError:
         await event.answer(
                 [],
                 switch_pm=f"Give a message too!",
-                switch_pm_param="start"
+                switch_pm_param="secret"
                 )
     try:
         ui = await bot(us(user))
@@ -66,12 +66,12 @@ async def inline(event):
         await event.answer(
                 [],
                 switch_pm="Invalid User ID/Username",
-                switch_pm_param="start"
+                switch_pm_param="secret"
                 )
         return
     db.update({"user_id": ui.user.id, "msg": msg, "self": event.sender.id})
     text = f"""
-A Whisper Has Been Sent
+A Lovely Has Been Sent
 To [{ui.user.first_name}](tg://user?id={ui.user.id})!
 Click The Below Button To See The Message!
 **Note:** __Only {ui.user.first_name} can open this!__
@@ -81,17 +81,17 @@ Click The Below Button To See The Message!
             description="It's a secret message! Sssh!",
             text=text,
             buttons=[
-                [Button.inline(" Show Message! ", data="wspr")]
+                [Button.inline(" Show Message! ", data="secret")]
                 ]
             )
     await event.answer(
             [dn],
             switch_pm="It's a secret message! Sssh",
-            switch_pm_param="start"
+            switch_pm_param="secret"
             )
 
 
-@bot.on(events.CallbackQuery(data="wspr"))
+@bot.on(events.CallbackQuery(data="secret"))
 async def ws(event):
     user = int(db["user_id"])
     lol = [int(db["self"])]
